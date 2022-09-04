@@ -3,19 +3,16 @@ package main;
 import config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.function.Supplier;
-
 public class Main {
     public static void main(String[] args) {
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
-        Parrot x = new Parrot();
-        x.setName("Kiki");
 
-        Supplier<Parrot> parrotSupplier = () -> x;
+        var person = context.getBean(Person.class);
+        var parrot = context.getBean(Parrot.class);
 
-        context.registerBean("parrot1", Parrot.class, parrotSupplier, bc -> bc.setPrimary(true));
+        System.out.println("Person's name: " + person.getName());
+        System.out.println("Parrot's name: " + parrot.getName());
 
-        Parrot p = context.getBean(Parrot.class);
-        System.out.println(p.getName());
+        System.out.println("Person's parrot: " + person.getParrot());
     }
 }
