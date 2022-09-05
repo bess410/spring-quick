@@ -9,6 +9,11 @@ import org.springframework.stereotype.Component;
 public class Person {
 
     private String name = "Ella";
+
+    private final Parrot parrot;
+
     @Autowired
-    private Parrot parrot;
+    public Person(Parrot parrot) {
+        this.parrot = parrot;
+    }
 }
