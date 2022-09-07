@@ -1,7 +1,6 @@
 package main;
 
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 @Data
 //@Component
